@@ -1,6 +1,17 @@
-﻿@{
+﻿@model IEnumerable<BigSchool.Models.Course>
+@{
     ViewBag.Title = "Home Page";
 }
+<div class="row">
+    <ul>
+        @foreach (var course in Model)
+        { 
+            <li>
+                @course.DateTime - @course.Lecturer.Name
+            </li>
+        }
+    </ul>
+</div>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -29,3 +40,14 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<ul>
+    @foreach (var course in Model)
+    {
+        <li>
+            <div class="date">
+
+            </div>
+        </li>
+    }
+</ul>
