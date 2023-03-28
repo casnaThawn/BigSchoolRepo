@@ -28,9 +28,13 @@
                 </div>
                 <div class="category">
                     @course.Category.Name
-                    @if (Model.ShowAction)
+                    @if (Model.ShowAction == false)
                     {
                         <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                    }
+                    else
+                    {
+                        <button data-course-id="@course.Id" class="btn btn-info btn-sm js-toggle-attendance">Going</button>
                     }
                 </div>
             </div>
@@ -57,14 +61,13 @@
 
             $('.js-toggle-follow').click(function (e) {
                 var button = $(e.target);
-                $.post("/api/followings", { FolloweeId: button.attr("data-user-id") }).done(function () {
-                    button
-                        .text("Following");
+                $.post("/api/followings", { FolloweeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
                 }).fail(function () {
                     alert("Something failed");
                 });
             });
-
         });
     </script>
 }

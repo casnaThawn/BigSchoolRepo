@@ -20,10 +20,10 @@ namespace BigSchool.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Attend(FollowingDTO followingDTO)
+        public IHttpActionResult Follow(FollowingDTO followingDTO)
         {
             var userId = User.Identity.GetUserId();
-            if (_dbContext.Followings.Any(f => f.FollowerId == userId && followingDTO.FolloweeId == followingDTO.FolloweeId))
+            if (_dbContext.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followingDTO.FolloweeId))
             {
                 return BadRequest("Following already exists !");
             }
